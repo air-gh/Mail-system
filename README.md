@@ -97,3 +97,5 @@ $ sudo service postfix status
 ```
 $ sudo postfix status
 ```
+
+Send email to air@your_domain_name, you will receive automatic replay with /etc/motd from your host!

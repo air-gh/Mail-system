@@ -20,7 +20,7 @@ myhostname = your_domain_name
 local_recipient_maps =
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-myorigin = /etc/mailname
+myorigin = your_domain_name
 mydestination = your_domain_name, localhost.localdomain, localhost
 relayhost = mail-server-address(imap.xxxx or smtp.xxxx)
 ```
@@ -38,13 +38,6 @@ $ cat air.sh
 #!/bin/sh
 t=`sed -n '/^From/p'|sed -n '1 p'|awk '{print $2}'`
 /usr/bin/mail -s "reply" $t -A /etc/motd </dev/null
-```
-
-/etc/mailname should be changed:
-
-```
-$ cat /etc/mailname
-your_domain_name
 ```
 
 You should activate the change of aliases file:

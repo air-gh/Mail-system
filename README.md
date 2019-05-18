@@ -39,7 +39,7 @@ air.sh program returns motd file to sender.
 
 - Debian flavors:
 ```
-$ cat air.sh
+$ cat /etc/air.sh
 #!/bin/sh
 t=`sed -n '/^From/p'|sed -n '1 p'|awk '{print $2}'`
 /usr/bin/mail -s "reply" $t -A /etc/motd >/dev/null
@@ -50,10 +50,16 @@ Create /etc/motd, no motd file on mac OS.
 Replace -A to redirect, no -A option for mail command.
 ```
 $ sudo sh -c "echo hello > /etc/motd"
-$ cat air.sh
+$ cat /etc/air.sh
 #!/bin/sh
 t=`sed -n '/^From/p'|sed -n '1 p'|awk '{print $2}'`
 /usr/bin/mail -s "reply" $t < /etc/motd >/dev/null
+```
+
+You should set executable bit for /etc/air.sh:
+
+```
+$ chmod +x /etc/air.sh
 ```
 
 You should activate the change of aliases file:
